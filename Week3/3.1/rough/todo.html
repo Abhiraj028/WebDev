@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>ToDo Time Nigga</h1>
+    <div class="mainBox">
+        
+    </div>
+    
+    <input class="textBox">
+    <button class="btn">Add Todo</button>
+
+    <script>
+        const btn = document.querySelector(".btn");
+        const textBox = document.querySelector(".textBox");
+        const mainBox = document.querySelector(".mainBox");
+        let i = 1;
+    function addTodo() {
+        const text = textBox.value;
+        mainBox.innerHTML += `<div class="singleLine singleLine-${i}">
+                                <div class="lilBox">${i+".) "+text}</div>
+                                <button class="btn-delete" onclick="fdelete(${i})">Delete</button>
+                                        </div>`;
+        
+        textBox.value = "";
+        i++;
+    }
+
+    btn.addEventListener("click", addTodo);
+    textBox.addEventListener("keydown", e => {
+        if (e.key === "Enter") {
+            addTodo();
+        }
+    });
+
+    btn.addEventListener("click",fdelete);
+    btn.addEventListener("keydown",e =>{
+        if(e.key == "Enter"){
+            fdelete();
+        }
+    })
+
+
+
+    function fdelete(i){
+        const element = document.querySelector(`.singleLine-${i}`);
+        mainBox.removeChild(element);
+    }
+
+    </script>
+    <style>
+        .singleLine{
+            display: flex;
+            align-items: center;
+        }
+
+        .btn-delete{
+            margin-bottom: 7px;
+        }
+
+        .lilBox{
+            margin-bottom: 7px;
+            margin-right: 10px;
+        }
+    </style>
+</body>
+</html>
