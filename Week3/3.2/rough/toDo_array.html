@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <button onclick="addTodo();">Add</button>
+    <script>
+        const div = document.createElement("div");
+        div.classList.add("upperBox");
+
+        let ToDo = [];
+
+        function addTodo(){
+
+            ToDo.push({title: document.querySelector("input").value,val:0});
+            render();
+        }
+        function removeTodo(id){
+            ToDo.splice(id,1);
+            render();
+        }
+
+        function render(){
+        div.innerHTML = '';
+        ToDo.forEach((each,i)=> {
+            const inner = document.createElement("div");
+            inner.classList.add(`div-${i}`);
+            const span = document.createElement("span");
+            span.innerHTML = each.title;
+            const btn = document.createElement("button");
+            btn.classList.add("btn");
+            btn.innerHTML = "Delete";
+            btn.onclick = () => removeTodo(i);
+
+            inner.appendChild(span);
+            inner.appendChild(btn);
+            div.appendChild(inner);
+            document.querySelector("body").appendChild(div);
+        })
+        }
+
+
+    </script>
+</body>
+</html>
