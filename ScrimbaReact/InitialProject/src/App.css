@@ -1,0 +1,119 @@
+body,html {
+  font-family: 'Inter', sans-serif;
+  background-color: black;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+#root{
+  border: #ffffff 2px solid;
+  border-radius: 1em;;
+  width:33em;
+  height: 28em;
+  padding: 0px;
+  margin-top: 5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav{
+  display: flex;
+  align-items: center;
+  gap:0.5em;
+  background-color:#252525;
+  padding: 2em 2em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;;
+}
+
+.nav-logo{
+  width: 2em;
+}
+
+.span{
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #61dafb;
+}
+
+.title{
+  color: white;
+  margin:0px;
+  padding-top: 1em;
+  width: 100%;
+  display: flex;
+  padding-left: 1em;
+  padding-bottom: 1em;
+}
+
+.main{
+  background-color: #2f3135;
+  color:white;
+  margin: 0;
+  flex: 1;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  background-image: url('../src/assets/react.svg');
+  background-repeat: no-repeat;
+  background-size: 9em;;
+  filter: grayscale(100%);
+  background-position: 123% 50%;
+  
+}
+
+::marker{
+  color: #61dafb;
+  font-size: x-large;
+}
+
+li{
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+ul{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+}
