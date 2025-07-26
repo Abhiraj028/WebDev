@@ -13,7 +13,7 @@ export default function Entry(){
                         </div>
                         <a href="https://gohttps://www.google.com/maps/place/Japan" target="_blank" rel="noopener noreferrer">View on Google Maps</a>
                     </div>
-                    <h1 className="mapName">Mount Fuji</h1>
+                    <h2 className="mapName">Mount Fuji</h2>
                     <p className="date">12 Jan, 2021 - 24 Jan, 2021</p>
                     <p className="description">Mount Fuji is the tallest mountain in Japan, standing at 3,776 meters (12,380 feet). Mount Fuji is the single most popular tourist site in Japan, for both Japanese and foreign tourists.</p>
                 </div>
