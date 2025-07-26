@@ -82,11 +82,11 @@ a{
 
 .entry{
   max-width: 550px;
-  height: 704px;
+  min-height: 704px;
   width: 100%;
   background-color: white;
-  border-bottom-left-radius: 1em;
-  border-bottom-right-radius: 1em;
+
+  border-radius: 1em;
 
   display: flex;
   flex-direction: column;
@@ -134,6 +134,7 @@ a{
   flex-direction: column;
   align-items: center;
   padding: 10em;
+  padding-top: 4.5em;
 }
 
 .logo {
