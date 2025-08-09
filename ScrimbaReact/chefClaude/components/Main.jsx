@@ -1,38 +1,37 @@
-import { useState } from "react"
+import { use, useState } from "react"
+import ClaudeRecipe from "./ClaudeRecipe"
+import BottomBox from "./BottomBox"
+import IngredientsList from "./IngredientsList"
+import { getRecipeFromMistral } from "../ai" 
 
 export default function Main() {
-    const ingredients = ["Chicken", "Oregano", "Tomatoes"]
 
     const [ingredient , setIngredients] = useState([])
+
+    const [recipeRecieved,setRecipeRecieved] = useState("")
     
     function onSubmit(formData) {
         const newIngredient = formData.get("ingredient")
         setIngredients(prev => [...prev , newIngredient])
     }
 
-    const ingredientElements = ingredient.map(ingredient => <li>{ingredient}</li>)
-    
+    function showRecipe(){
+        setRecipeRecieved(prev => !prev)
+    }
+
     return (
         <main className='main'>
             <form action={onSubmit} className="form">
                 <input type="text" className="input" placeholder="Add ingredients" name="ingredient" />
                 <button  className="button">+ Add ingredient</button>
             </form>
-            {console.log(ingredientElements)}
-            {( ingredientElements.length > 0 && <h1 className="ingredients-heading">Ingredients we have:</h1>)}
-            <ul className="ingredients-list">
-                {ingredientElements}
-            </ul>
+            
+            <IngredientsList ingredient={ingredient}/>
 
-            {ingredient.length > 3 && <div className="bottomContainer">
-                <div className="bottomLeft">
-                    <h3>Ready for a recipe?</h3>
-                    <h5>Generate a recipe from your list of ingredients</h5>
-                </div>
-                <div className="bottomRight">
-                    <button className="getRecipeButton">Get a recipe</button>
-                </div>
-            </div>}
+            <BottomBox renderRecipe={getRecipeFromMistral} ingredient = {ingredient} setRecipeRecieved = {setRecipeRecieved}/>
+
+            <ClaudeRecipe recipeRecieved={recipeRecieved}/>
+
         </main>
     )
 }
