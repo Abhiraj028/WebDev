@@ -1,6 +1,6 @@
 import { InferenceClient } from "@huggingface/inference";
 
-const HF_TOKEN = process.env.VITE_HF_ACCESS_TOKEN;
+const HF_TOKEN = import.meta.env.VITE_HF_ACCESS_TOKEN;
 const client = new InferenceClient(HF_TOKEN);
 
 export async function getRecipeFromMistral(ingredientsArr) {
