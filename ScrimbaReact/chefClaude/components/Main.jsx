@@ -1,14 +1,24 @@
-import { use, useState } from "react"
+import { useRef, useState } from "react"
 import ClaudeRecipe from "./ClaudeRecipe"
 import BottomBox from "./BottomBox"
 import IngredientsList from "./IngredientsList"
 import { getRecipeFromMistral } from "../ai" 
+import { useEffect } from "react"
 
 export default function Main() {
 
     const [ingredient , setIngredients] = useState([])
 
     const [recipeRecieved,setRecipeRecieved] = useState("")
+
+    const recipeScroll = useRef(null)
+
+    useEffect(() =>{
+        if(recipeRecieved != ""){
+            recipeScroll.current.scrollIntoView({behavior:"smooth"})
+        }
+
+    },[recipeRecieved,recipeScroll])
     
     function onSubmit(formData) {
         const newIngredient = formData.get("ingredient")
@@ -28,7 +38,7 @@ export default function Main() {
             
             <IngredientsList ingredient={ingredient}/>
 
-            <BottomBox renderRecipe={getRecipeFromMistral} ingredient = {ingredient} setRecipeRecieved = {setRecipeRecieved}/>
+            <BottomBox ref={recipeScroll} renderRecipe={getRecipeFromMistral} ingredient = {ingredient} setRecipeRecieved = {setRecipeRecieved}/>
 
             <ClaudeRecipe recipeRecieved={recipeRecieved}/>
 
