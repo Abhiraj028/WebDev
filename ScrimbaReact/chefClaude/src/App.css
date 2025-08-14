@@ -153,6 +153,7 @@ body {
   align-items: center;
   width: 35em;
   margin: 2em auto;
+  margin-bottom: 0;
   padding: 1em;
   background-color: #F0EFEB;
   border-radius: 0.7em;
