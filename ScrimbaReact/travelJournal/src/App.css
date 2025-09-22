@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #5a5a5a;
+}
+
+.header{
+  width: 100%;
+  max-width: 550px;
+  height: 55px;
+  background-color: #F55A5A;
+  color: white ;
+  display: flex;
+  justify-content: center;
+  gap:0.7em;
+  box-sizing: border-box;
+  padding-top: 1em;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+.img-japan{
+  width: 125px;
+  height: 168px;
+  object-fit: cover;
+  border-radius: 0.5em;
+}
+
+.location{
+  font-weight: 400;
+  font-size:xx-small;
+}
+.icon{
+  width: 15px;
+  height: 15px;
+}
+
+a{
+  text-decoration: none;
+  font-size: x-small;
+  text-decoration: underline;
+  color: gray;
+}
+
+.date{
+  font-weight: 600;
+  display: flex;
+  padding-top: 1em;
+  padding-left: 1.4em;
+  font-size: small;
+}
+
+.mapsStuff{
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  justify-content: start;
+  padding-left: 1em;
+
+}
+
+.description{
+  display: flex;
+  padding-top: 0.9em;
+  padding-left: 2em;
+  text-align: start;
+  font-weight: 400;
+  font-size: x-small;
+  line-height: 1.5em;
+  color: #616060;
+}
+
+.divider {
+  width: 90%;          
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 1em auto;     
+}
+
+
+
+.entry{
+  max-width: 550px;
+  min-height: 704px;
+  width: 100%;
+  background-color: white;
+
+  border-radius: 1em;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.mapName{
+  display: flex;
+  padding-left: 0.8em;
+  padding-top: 0.7em;
+}
+
+.mapsRHS{
+  display: flex;
+  align-items: center;
+}
+
+.box{
+  display: flex;
+  width: 470px;
+  height: 168px;
+  padding-top: 3em;
+  padding-left: 2em;
+}
+
+.headerSpan{
+  height: 24px;
+}
+
+.rhs-text > * {
+  margin: 0; 
+  
+}
+
+.rhs-text{
+  padding-top: 0.5em;
+}
+
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10em;
+  padding-top: 4.5em;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}

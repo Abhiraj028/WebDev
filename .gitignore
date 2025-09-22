@@ -1,0 +1,6 @@
+# Ignore ALL node_modules folders anywhere in the repo
+node_modules/
+**/node_modules/
+# Ignore optional folders
+assignments/
+miscPractice/

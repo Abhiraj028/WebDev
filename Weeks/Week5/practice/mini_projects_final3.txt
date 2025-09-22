@@ -1,0 +1,51 @@
+
+Mini Projects (Final 3 Before Next Level)
+----------------------------------------
+
+🧃 5. Random Drink API (Query + Random)
+---------------------------------------
+Route: GET /drink
+What it does:
+- Returns a random drink from a list
+- If `type` is passed (`?type=hot/cold`), return a random one of that type
+
+Skills:
+- Math.random()
+- req.query.type
+- Simple conditionals
+
+🗓️ 6. To-Do List API (POST + GET + DELETE)
+------------------------------------------
+Routes:
+- POST /todos → Add todo { title: "do homework" }
+- GET /todos → Return all todos
+- DELETE /todos/:id → Remove by id
+
+Concepts:
+- req.body
+- Basic ID generation (Date.now() or just count)
+- CRUD thinking starts here
+
+🏷️ 7. Tag Filter API
+---------------------
+Route: GET /articles?tag=js
+
+Data Example:
+const articles = [
+  { id: 1, title: "Intro to JS", tags: ["js", "beginner"] },
+  { id: 2, title: "CSS Tricks", tags: ["css", "design"] },
+  { id: 3, title: "Advanced JS", tags: ["js", "advanced"] },
+];
+
+If query tag=js → return articles that include "js" in tags array
+
+Concepts:
+- Array.includes()
+- Nested data filtering
+
+----------------------------------------
+
+✅ Recommended Order:
+1. Drink API (fun + short)
+2. Tag Filter (array logic)
+3. To-Do List API (mini CRUD, your grand finale for the day)

@@ -1,0 +1,75 @@
+body{
+    background-color: hsl(0, 0%, 8%);
+    color:hsl(0, 0%, 100%);
+}
+
+.outer{
+    margin-left:700px;
+    margin-top:200px;
+    background-color: hsl(0, 0%, 12%);
+    display: flex;
+    flex-direction: column;
+    height: 600px;
+    width: 450px;
+    border-radius: 2%;
+    padding-top:40px;
+}   
+
+.picture{
+    display: flex;
+    justify-content: center;   
+    
+}
+
+.person_image{
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+}
+
+.name, .location, .text, .links{
+    display: flex;
+    justify-content: center;
+}
+
+.name{
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.links{
+    margin-top:25px;
+    flex-direction: column;
+    gap:15px;
+}
+
+.location{
+    color:hsl(75, 94%, 57%);
+    font-weight: 400;
+    font-size: 14px;
+
+}
+
+.text{
+    margin-top: 30px;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+.btn{
+    padding: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+    border-width: 0px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: hsl(75, 94%, 57%);
+    color: black;
+}

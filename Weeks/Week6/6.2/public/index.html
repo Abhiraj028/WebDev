@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth</title>
+</head>
+<body>
+    <div class="container">
+        <div class="signUp-box box">
+            <h5 class="signUp-text text">Sign Up</h5>
+            <input class="signUp-username username"type="text" placeholder="Username">
+            <input class="signUp-password password"type="password" placeholder="Password">
+            <button class="signUp-btn btn" onclick="signup()" >Submit</button>
+        </div>
+
+        <div class="userInfo">
+            <h5 class="userInfo-title">User  Information</h5>
+        </div>
+
+        <div class="signIn-box box">
+            <h5 class="signIn-text text">Sign In</h5>
+            <input class="signIn-username username"type="text" placeholder="Username">
+            <input class="signIn-password password"type="password" placeholder="Password">
+            <button class="signIn-btn btn" onclick="signin()" >Submit</button>
+        </div>
+
+        <button class="btn logout-btn" onclick="logout()">Log Out</button>
+    </div>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+        html,body{
+            height: 100vh;
+            margin: 0;
+            font-family: "Roboto", sans-serif;
+            background: linear-gradient( #eecfc5, #d8e2e4);        
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .text{
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin: 2vh;
+            margin-right: 3.6vw;
+        }
+        .box{
+            margin-top:20vh;
+        }
+        .username,.password{
+            padding:1vh;
+            border-radius: 8px;
+        }
+        .btn{
+            padding:1vh;
+            border-radius: 12px;
+        }
+        .signIn-box{
+            margin-top:5vh;
+        }
+        .userInfo{
+            position: absolute;
+            top:55%;
+            right: 78%;
+            display: flex;
+            width:400px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+        }
+        .userInfo-title{
+            font-size: 24px;
+            font-weight: 800;
+            margin:7px;
+            padding:1vh;
+            border-style:solid;
+            border-color: #794b3c;
+            border-bottom: inset #794b3c 6px;
+        }
+        .logout-btn{
+            justify-content: center;
+            align-items: center;
+            margin:3vh;
+            margin-right: 70px;
+        }
+        .info{
+            margin:5px;
+            font-size: 18px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        function textPlacer(gotText){
+            let i = 0;
+            let log = document.querySelector(".userInfo");
+            let data = document.createElement("h5");
+            let Cid = i++;
+            data.setAttribute("class","info info"+Cid);
+            data.innerText = gotText;
+            log.appendChild(data);
+
+            setTimeout(()=>{
+                const del = document.querySelector(".info"+(Cid));
+                log.removeChild(del);
+            },5000);
+        }
+
+        async function signup(){
+            let signUp_username = document.querySelector(".signUp-username").value;
+            let signUp_password = document.querySelector(".signUp-password").value;
+
+            try{
+            await axios.post("http://localhost:3000/signup",{
+                username:signUp_username,
+                password:signUp_password
+            });
+            textPlacer("Signed Up Successfully!");
+            } 
+            catch (err) {
+                textPlacer(err.response.data.msg || "Unknown signup error");
+            }
+            document.querySelector(".signUp-username").value = "";
+            document.querySelector(".signUp-password").value = "";
+        }
+        
+        async function signin(){
+            let signIn_username = document.querySelector(".signIn-username").value;
+            let signIn_password = document.querySelector(".signIn-password").value;
+        
+            try{
+            const getBack = await axios.post("http://localhost:3000/signin",{
+                username:signIn_username,
+                password:signIn_password
+            });
+            console.log(getBack);
+            textPlacer(getBack.data.msg);
+            localStorage.setItem("token",getBack.data.token);
+            me();
+
+            } 
+            catch (err) {
+                textPlacer(err.response.data.msg || "Unknown signup error");
+            }
+            document.querySelector(".signIn-username").value = "";
+            document.querySelector(".signIn-password").value = "";
+        }
+
+        async function me(){
+            try{
+            const resp = await axios("http://localhost:3000/me",{
+                headers:{
+                    token: localStorage.getItem("token")
+                }
+            })
+
+            const username = "Your Username is: "+resp.data.username;
+            const password = "Your Password is: "+resp.data.password;
+            textPlacer(username);
+            textPlacer(password);
+            }
+            catch(err){
+                textPlacer(err.data.msg);
+            }
+        }
+
+        function logout(){
+            localStorage.removeItem("token");
+        }
+    </script>   
+</body>
+</html>

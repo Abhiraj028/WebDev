@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="inputBox">
+        <input type="text" class="textInput">
+        <button class="btn-add">Add ToDo</button>
+    </div>
+    <div class="type-area"></div>
+    
+    <script>
+        const btn_add = document.querySelector(".btn-add");
+        const textInput = document.querySelector(".textInput");
+        const type_area = document.querySelector(".type-area");
+        btn_add.addEventListener("click",addTodo);
+        textInput.addEventListener("keydown",e =>{
+            if(e.key == "Enter"){
+                addTodo();
+            }
+        })
+        let i = 1;
+        function addTodo(){
+            const val = textInput.value;
+            const element = document.createElement("div");
+            element.classList.add("line-"+i);
+            element.classList.add("line");
+            element.innerHTML = `<div class = "text">${i}.) ${val}</div><button class=btn-del onclick="fdel(${i})">Delete</button>`;
+            element.id = i;
+            i++;
+            type_area.appendChild(element);
+            textInput.value = "";
+            render();
+        }
+
+        function fdel(id){
+            const del = document.querySelector(`.line-${id}`);
+            del.parentNode.removeChild(del);
+            render();
+        }
+
+        function render(){
+            const nodes = document.querySelectorAll(".text");
+            let ctr = 1;
+            nodes.forEach(each =>{
+                each.innerHTML = each.innerHTML.replace(/^\d+\.\)s*/, '');
+                const val = each.innerHTML;
+                each.innerHTML = `${ctr}.) ${val}`;
+                ctr++;
+
+            })
+        }
+        
+
+
+
+    </script>
+
+    <style>
+        .inputBox{
+            display: flex;
+            gap:7px;
+        }
+        .line{
+            display: flex;
+            margin: 5px;
+            gap:7px;
+            align-items: center;
+        }
+        
+    </style>
+</body>
+</html>
